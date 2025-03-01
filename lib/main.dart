@@ -30,11 +30,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final TextEditingController _taskController = TextEditingController();
+  final List<String> _tasks = [];
 
-  void _incrementCounter() {
+  void _addTask() {
     setState(() {
-      _counter++;
+      if (_taskController.text.isNotEmpty) {
+        _tasks.add(_taskController.text);
+        _taskController.clear();
+      }
     });
   }
 
